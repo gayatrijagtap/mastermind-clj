@@ -1,6 +1,6 @@
 (ns mastermind.core)
 
-(def colors ["r" "g" "b" "y" "w" "p" "c" "a"])
+(def colors [:r :g :b :y :w :p :c :a])
 
 (def random-colors (vec (take 5 (shuffle colors))))
 
@@ -16,7 +16,6 @@
 
 (defn game []
       (loop [attempts 0]
-            (println random-colors)
             (println "attempt" attempts)
             (println "color options" colors)
             (println "Guess:")
@@ -24,4 +23,3 @@
                  (println "correct guess:" correct-guess)
                  (println "in order:" in-order)
                  (if (> attempts 12) (println "maximum attempts!!!! Game over!!! your guess:" user-guess) (if (= user-guess random-colors) (println "correct guess!!!! you won!!!" user-guess) (recur (inc attempts)))))))
-
